@@ -3,9 +3,9 @@
 #include "User.cpp"
 
 int main() {
-  User user("Brent", 22);
+	User user("Brent", 22);
 
-  user.greet();
+	user.greet();
 
-  return 0;
+	return 0;
 }

@@ -3,8 +3,8 @@
 #include "Vehicle.cpp"
 
 class Car : public Vehicle {
-  public:
+public:
     Car(std::string hornSound) {
-      this->hornSound = hornSound;
+        this->hornSound = hornSound;
     }
 };

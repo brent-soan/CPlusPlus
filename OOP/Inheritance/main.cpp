@@ -3,9 +3,9 @@
 #include "Car.cpp"
 
 int main() {
-  Car car1("BEEP!");
+	Car car1("BEEP!");
 
-  car1.honk();
+	car1.honk();
 
-  return 0;
+	return 0;
 }
