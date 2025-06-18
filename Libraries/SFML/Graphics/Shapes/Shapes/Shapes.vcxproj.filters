@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Drawing.cpp">
+    <ClCompile Include="Shapes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
