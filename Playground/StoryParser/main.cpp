@@ -30,16 +30,21 @@ int main() {
             texture = "EMPTY";
         } else if(line.size() > 3) {
             if(line.at(0) >= '0' && line.at(0) <= '9') { // Texture
-                if(line.at(1) >= '0' && line.at(1) <= '9') {
-                    line.erase(0, 4); // Remove "10. "
+                if(line.find("Black Screen") != std::string::npos) {
+                    texture = "";
                 } else {
-                    line.erase(0, 3); // Remove "1. "
+                    if(line.at(1) >= '0' && line.at(1) <= '9') {
+                        line.erase(0, 4); // Remove "10. "
+                    }
+                    else {
+                        line.erase(0, 3); // Remove "1. "
+                    }
+
+                    line.pop_back(); // Remove semicolon
+                    line.append(".png");
+                    texture = line;
                 }
 
-                line.pop_back(); // Remove semicolon
-                line.append(".png");
-                //std::cout << line << std::endl;
-                texture = line;
                 dialogue = "EMPTY";
             } else if(line.starts_with("   ")) { // Dialogue
                 line.erase(0, 3); // Remove "   "
