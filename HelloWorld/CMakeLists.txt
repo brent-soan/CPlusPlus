@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 4.2.1)
+project(HelloWorld)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED YES)
+set(CMAKE_CXX_EXTENSIONS OFF)
+add_executable(${PROJECT_NAME} main.cpp)

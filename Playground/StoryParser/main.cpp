@@ -3,12 +3,13 @@
 #include <string>
 #include <vector>
 #include <tuple>
+#include "fmt/core.h"
 
 int main() {
     std::vector<std::tuple<int, std::string, std::string>> assets;
     std::ifstream file = std::ifstream("WITC In-game Story.txt");
     std::string line;
-    int checkpoint = -1;
+    int checkpoint = -4;
     std::string texture = "EMPTY";
     std::string dialogue = "EMPTY";
     
@@ -19,20 +20,23 @@ int main() {
         if(line.size() < 2) { // Empty line
             texture = "EMPTY";
             dialogue = "EMPTY";
-        } else if(line.starts_with("Act")) {
-            checkpoint = -1;
+        }
+        else if(line.starts_with("Act")) {
+            checkpoint = -4;
             texture = "EMPTY";
             dialogue = "EMPTY";
-        } else if(line.starts_with("Week")) { // Checkpoint
+        }
+        else if(line.starts_with("Week")) { // Checkpoint
             line.erase(0, 5); // Remove "Week "
-            //std::cout << line << std::endl;
             checkpoint = std::stoi(line);
             texture = "EMPTY";
-        } else if(line.size() > 3) {
+        }
+        else if(line.size() > 3) {
             if(line.at(0) >= '0' && line.at(0) <= '9') { // Texture
                 if(line.find("Black Screen") != std::string::npos) {
                     texture = "";
-                } else {
+                }
+                else {
                     if(line.at(1) >= '0' && line.at(1) <= '9') {
                         line.erase(0, 4); // Remove "10. "
                     }
@@ -42,11 +46,12 @@ int main() {
 
                     line.pop_back(); // Remove semicolon
                     line.append(".png");
-                    texture = line;
+                    texture = fmt::format("Assets/Textures/Scenes/{}", line);
                 }
 
                 dialogue = "EMPTY";
-            } else if(line.starts_with("   ")) { // Dialogue
+            }
+            else if(line.starts_with("   ")) { // Dialogue
                 line.erase(0, 3); // Remove "   "
 
                 if(line.at(1) >= '0' && line.at(1) <= '9') {
@@ -56,12 +61,11 @@ int main() {
                     line.erase(0, 3); // Remove "1. "
                 }
 
-                //std::cout << line << std::endl;
                 dialogue = line;
             }
         }
 
-        if(checkpoint != -1 && texture != "EMPTY" && dialogue != "EMPTY") {
+        if(checkpoint != -4 && texture != "EMPTY" && dialogue != "EMPTY") {
             assets.push_back(std::make_tuple(checkpoint, texture, dialogue));
         }
     }
