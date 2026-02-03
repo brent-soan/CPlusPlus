@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="spdlog.vcxproj" Id="8ef44620-9813-4e6d-ab0d-0431fdc9a6a5" />
+</Solution>
