@@ -16,5 +16,6 @@ struct LocationSceneAsset {
 };
 
 struct NewspaperAsset {
+    int checkpoint;
     std::string headline;
 };
